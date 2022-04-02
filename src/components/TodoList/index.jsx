@@ -6,15 +6,15 @@ import { useState } from 'react';
 import Todo from '../Todo';
 import { addTodo_Action } from '../../redux/actions'
 import { todoListAfterSearchText } from '../../redux/selectors';
-import { todoListReducer as todoListSlice} from './TodoListReducer'
-
+import { todoListReducer as todoListSlice } from './TodoListReducer'
+import { saveState } from '../../redux/localStorage'
+import store from '../../redux/store'
 export default function TodoList() {
     const [todoName, setTodoName] = useState()
     const [priority, setPriority] = useState('low')
 
     const dispatch = useDispatch()
     const todoListRemaining = useSelector(todoListAfterSearchText)
-
     // const handleAddButtonClick = () => {
     //     dispatch(addTodo_Action({
     //         id: uuidv4(),
@@ -26,16 +26,20 @@ export default function TodoList() {
     //     setPriority('low')
     // }
     const handleAddButtonClick = () => {
-        dispatch(
-            todoListSlice.actions.addTodo({
-                id: uuidv4(),
-                name: todoName,
-                completed: false,
-                priority: priority,
-            })
-        )
-        setTodoName('')
-        setPriority('low')
+        if (todoName) {
+            dispatch(
+                todoListSlice.actions.addTodo({
+                    id: uuidv4(),
+                    name: todoName,
+                    completed: false,
+                    priority: priority,
+                })
+            )
+            setTodoName('')
+            setPriority('low')
+        } else
+            return
+
     }
     const handleInputChange = (e) => {
         setTodoName(e.target.value)

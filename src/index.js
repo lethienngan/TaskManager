@@ -4,7 +4,11 @@ import './index.css';
 import App from './App';
 import store from './redux/store';
 import { Provider } from 'react-redux';
+import { saveState } from './redux/localStorage'
 
+store.subscribe(() => {
+    saveState(store.getState())
+})
 
 ReactDOM.render(
     <React.StrictMode>
