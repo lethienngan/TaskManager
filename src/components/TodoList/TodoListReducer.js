@@ -27,6 +27,7 @@ export default todoListReducer;
 */
 
 import { createSlice } from '@reduxjs/toolkit'
+import produce from 'immer'
 
 export const todoListReducer = createSlice({
     name: 'todoList',
@@ -43,5 +44,11 @@ export const todoListReducer = createSlice({
                 return todo
             })
         },
+        removeCompletedTodo: (state) => {
+            //mutation code || immer
+
+           return state.filter((todo, index) => todo.completed === false)
+
+        }
     }
 })

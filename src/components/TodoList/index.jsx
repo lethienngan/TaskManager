@@ -1,14 +1,14 @@
-import { Col, Row, Input, Button, Select, Tag } from 'antd';
+import { Col, Row, Input, Button, Select, Tag, Divider } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import { useState } from 'react';
 
 import Todo from '../Todo';
-import { addTodo_Action } from '../../redux/actions'
 import { todoListAfterSearchText } from '../../redux/selectors';
 import { todoListReducer as todoListSlice } from './TodoListReducer'
-import { saveState } from '../../redux/localStorage'
-import store from '../../redux/store'
+
+
+
 export default function TodoList() {
     const [todoName, setTodoName] = useState()
     const [priority, setPriority] = useState('low')
@@ -47,9 +47,14 @@ export default function TodoList() {
     const handleInputPriorityChange = (value) => {
         setPriority(value)
     }
+    const handleRemoveButtonClick = () => {
+        dispatch(
+            todoListSlice.actions.removeCompletedTodo()
+        )
+    }
     return (
         <Row style={{ height: 'calc(100% - 40px)' }}>
-            <Col span={24} style={{ height: 'calc(100% - 40px)', overflowY: 'auto' }}>
+            <Col span={24} style={{ height: '400px', overflowY: 'auto' }}>
                 {
                     todoListRemaining.map((todo) => (
                         <Todo
@@ -79,6 +84,12 @@ export default function TodoList() {
                         Add
                     </Button>
                 </Input.Group>
+            </Col>
+            <Divider />
+            <Col span={24}>
+                <Button type='danger' onClick={handleRemoveButtonClick}>
+                    Remove completed Task
+                </Button>
             </Col>
         </Row>
     );

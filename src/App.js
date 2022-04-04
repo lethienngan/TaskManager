@@ -16,11 +16,12 @@ function App() {
                 margin: '0 auto',
                 display: 'flex',
                 flexDirection: 'column',
+                // flex: '1',
                 backgroundColor: 'white',
                 padding: 20,
                 boxShadow: '0 0 10px 4px #bfbfbf',
                 borderRadius: 5,
-                height: '90vh',
+                // height: '90vh',
             }}
         >
             <Title keyboard style={{ textAlign: 'center' }}>Task Management</Title>
