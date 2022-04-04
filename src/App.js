@@ -17,7 +17,7 @@ function App() {
                 display: 'flex',
                 flexDirection: 'column',
                 // flex: '1',
-                backgroundColor: 'white',
+                backgroundColor: '#F2F2F2',
                 padding: 20,
                 boxShadow: '0 0 10px 4px #bfbfbf',
                 borderRadius: 5,
