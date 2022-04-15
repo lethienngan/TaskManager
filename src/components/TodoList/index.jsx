@@ -15,16 +15,7 @@ export default function TodoList() {
 
     const dispatch = useDispatch()
     const todoListRemaining = useSelector(todoListAfterSearchText)
-    // const handleAddButtonClick = () => {
-    //     dispatch(addTodo_Action({
-    //         id: uuidv4(),
-    //         name: todoName,
-    //         completed: false,
-    //         priority: priority,
-    //     }))
-    //     setTodoName('')
-    //     setPriority('low')
-    // }
+
     const handleAddButtonClick = () => {
         if (todoName) {
             dispatch(
@@ -53,8 +44,11 @@ export default function TodoList() {
         )
     }
     return (
-        <Row style={{ height: 'calc(100% - 40px)' }}>
-            <Col span={24} style={{ height: '400px', overflowY: 'auto' }}>
+        <Row style={{
+            height: 'calc(100% - 40px)',
+            margin: '0'
+        }}>
+            <Col span={24} style={{ height: '35vh', overflowY: 'auto' }}>
                 {
                     todoListRemaining.map((todo) => (
                         <Todo
@@ -85,8 +79,8 @@ export default function TodoList() {
                     </Button>
                 </Input.Group>
             </Col>
-            <Divider />
-            <Col span={24}>
+            {/* <Divider /> */}
+            <Col style={{ margin:'10px'}}>
                 <Button type='danger' onClick={handleRemoveButtonClick}>
                     Remove completed Task
                 </Button>

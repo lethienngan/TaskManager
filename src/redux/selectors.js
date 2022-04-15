@@ -6,8 +6,6 @@ export const priorityFilterSelector = (state) => state.filters.priority
 export const todoListSelector = (state) => state.todoList
 
 export const todoListAfterSearchText = createSelector(
-    // (state) => state.todoList,
-    // (state) => state.filters.search,
     todoListSelector,
     searchTextSelector,
     statusFilterSelector,

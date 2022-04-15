@@ -20,8 +20,9 @@ function App() {
                 backgroundColor: '#F2F2F2',
                 padding: 20,
                 boxShadow: '0 0 10px 4px #bfbfbf',
+                boxSizing: 'border-box',
                 borderRadius: 5,
-                // height: '90vh',
+                height: '100vh',
             }}
         >
             <Title keyboard style={{ textAlign: 'center' }}>Task Management</Title>
